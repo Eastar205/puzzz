@@ -1,12 +1,8 @@
 {
   "waveId": 1,
-  "baseHp": 300,
   "monsters": [
-    { "hp": 40, "spawnDelay": 1 },
-    { "hp": 40, "spawnDelay": 2 },
-    { "hp": 50, "spawnDelay": 2 },
-    { "hp": 50, "spawnDelay": 2 },
-    { "hp": 60, "spawnDelay": 2 },
-    { "hp": 80, "spawnDelay": 2.5 }
+    { "hp": 40,  "spawnDelay": 0.0, "label": "고블린", "speedMultiplier": 1.0 },
+    { "hp": 40,  "spawnDelay": 0.0, "label": "고블린", "speedMultiplier": 1.0 },
+    { "hp": 50,  "spawnDelay": 0.0, "label": "임프",   "speedMultiplier": 1.2 }
   ]
 }

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <radialGradient id="bgGoblin" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#a7a2bd"/>
+      <stop offset="55%" stop-color="#655f80"/>
+      <stop offset="100%" stop-color="#3a3550"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="60" fill="url(#bgGoblin)"/>
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#1f1b30" stroke-opacity="0.3" stroke-width="2"/>
+  <g transform="translate(64,68)">
+    <polygon points="-22,-30 -30,-8 -14,-16" fill="#7ddc7f"/>
+    <polygon points="22,-30 30,-8 14,-16" fill="#7ddc7f"/>
+    <path d="M -26,-6 Q 0,-30 26,-6 Q 26,20 14,28 L 8,20 L 0,28 L -8,20 L -14,28 Q -26,20 -26,-6 Z" fill="#7ddc7f"/>
+    <circle cx="-10" cy="-2" r="4" fill="#241f33"/>
+    <circle cx="10" cy="-2" r="4" fill="#241f33"/>
+    <path d="M -8,12 L -3,7 L 2,12 L 7,7 L 12,12" fill="none" stroke="#241f33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

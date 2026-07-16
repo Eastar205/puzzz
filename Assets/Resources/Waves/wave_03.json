@@ -1,0 +1,10 @@
+{
+  "waveId": 3,
+  "baseHp": 300,
+  "monsters": [
+    { "hp": 70,  "spawnDelay": 0.0, "label": "임프",       "speedMultiplier": 1.3 },
+    { "hp": 90,  "spawnDelay": 0.0, "label": "오크",       "speedMultiplier": 0.9 },
+    { "hp": 90,  "spawnDelay": 0.0, "label": "오크",       "speedMultiplier": 0.9 },
+    { "hp": 140, "spawnDelay": 2.0, "label": "오크 대장", "speedMultiplier": 0.7 }
+  ]
+}

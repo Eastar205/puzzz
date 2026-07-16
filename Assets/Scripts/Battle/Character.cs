@@ -11,6 +11,11 @@ namespace Puzzz.Battle
         [SerializeField] private SkillActivationMode _skillMode = SkillActivationMode.Auto;
         [SerializeField] private float _maxMana = 100f;
 
+        [Header("전투 스탯 (캐릭터별로 다르게 설정)")]
+        [SerializeField] private float _maxHp = 100f;
+        [SerializeField] private float _attackDamage = 8f;
+        [SerializeField] private float _attackInterval = 1.5f;
+
         public string CharacterName => _characterName;
         public ObjectColor Element => _element;
         public float MaxMana => _maxMana;
@@ -22,12 +27,35 @@ namespace Puzzz.Battle
             set => _skillMode = value;
         }
 
+        public float MaxHp => _maxHp;
+        public float CurrentHp { get; private set; }
+        public bool IsAlive => CurrentHp > 0f;
+        public float AttackDamage => _attackDamage;
+        public float AttackInterval => _attackInterval;
+
         public event Action OnSkillReady;
         public event Action OnSkillCast;
 
+        private void Awake()
+        {
+            CurrentHp = _maxHp;
+        }
+
+        public void TakeDamage(float amount)
+        {
+            if (!IsAlive) return;
+            CurrentHp = Mathf.Max(0f, CurrentHp - amount);
+        }
+
+        public void Heal(float amount)
+        {
+            if (!IsAlive) return;
+            CurrentHp = Mathf.Min(_maxHp, CurrentHp + amount);
+        }
+
         public void AddMana(float amount)
         {
-            if (IsSkillReady) return;
+            if (!IsAlive || IsSkillReady) return;
 
             CurrentMana = Mathf.Min(_maxMana, CurrentMana + amount);
             if (!IsSkillReady) return;
@@ -44,7 +72,7 @@ namespace Puzzz.Battle
 
         public void TryManualCast()
         {
-            if (_skillMode == SkillActivationMode.Manual && IsSkillReady)
+            if (IsAlive && _skillMode == SkillActivationMode.Manual && IsSkillReady)
             {
                 CastSkill();
             }

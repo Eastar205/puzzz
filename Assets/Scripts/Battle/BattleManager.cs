@@ -8,8 +8,6 @@ namespace Puzzz.Battle
     {
         [SerializeField] private CharacterRoster _roster;
         [SerializeField] private WaveManager _waveManager;
-        [SerializeField] private float _baseAttackInterval = 1.5f;
-        [SerializeField] private float _baseAttackDamage = 8f;
         [SerializeField] private float _skillDamage = 60f;
         [SerializeField] private float _healAmount = 40f;
         [SerializeField] private float _buffAttackSpeedMultiplier = 2f;
@@ -51,11 +49,13 @@ namespace Puzzz.Battle
 
             foreach (var character in _roster.AllCharacters)
             {
+                if (!character.IsAlive) continue;
+
                 _attackTimers[character] += Time.deltaTime * _attackSpeedMultiplier;
-                if (_attackTimers[character] < _baseAttackInterval) continue;
+                if (_attackTimers[character] < character.AttackInterval) continue;
 
                 _attackTimers[character] = 0f;
-                target.TakeDamage(_baseAttackDamage);
+                target.TakeDamage(character.AttackDamage);
             }
         }
 
@@ -63,7 +63,8 @@ namespace Puzzz.Battle
         {
             if (character.Element == ObjectColor.Yellow)
             {
-                _waveManager.HealBase(_healAmount);
+                var healTarget = _roster.GetFrontlineAlive() ?? character;
+                healTarget.Heal(_healAmount);
                 return;
             }
 
