@@ -1,0 +1,12 @@
+{
+  "waveId": 1,
+  "baseHp": 300,
+  "monsters": [
+    { "hp": 40, "spawnDelay": 1 },
+    { "hp": 40, "spawnDelay": 2 },
+    { "hp": 50, "spawnDelay": 2 },
+    { "hp": 50, "spawnDelay": 2 },
+    { "hp": 60, "spawnDelay": 2 },
+    { "hp": 80, "spawnDelay": 2.5 }
+  ]
+}
